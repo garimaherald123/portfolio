@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css"
+</head>
+<body>
+    <div class="hero">
+            <nav>
+                <img src="garima logo.jpg" class="logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="detail">
+                <h1>Hii, My Name is: <span> Garima Oli</span></h1>
+                <h2>I am <span>a student</span></h2><br>             
+                <p>This is my official portfolio website that shows all
+                    <br>Detail and expertise about myself
+                </p> <br>
+            </div>
+            <div class="images">
+                <img src="G-balaju.jpg" class="girl">
+            </div>
+        </div>
+        <!--------about-------> 
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                    <img src="garima formal.jpg">
+                    </div>
+                    <div class="about-col-2">
+                    <h1 class="sub-title">About me</h1><br><br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati cupiditate iure magnam quaerat ullam? Maxime molestias quam repellendus, ut tempora neque aspernatur quidem libero ratione assumenda maiores et ipsam debitis.</p><br><br>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')" >Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>HTML </span></li>
+                            <li><span>CSS </span></li>
+                            <li><span>Javascript </span></li>
+                            <li><span>Python </span></li>
+                            <li><span>Java </span></li>
+                            <li><span>Wordpress </span></li>
+                            <li><span>MySQL </span></li>
+                            <li><span>GitHub </span></li>
+                            <li><span>Cmd </span></li>
+                            <li><span>Bash </span></li>
+                        </ul>
+                    </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>2022-2023 </span><br>Pharmacy internship at Niko Pharmacy</li>
+                    </ul>
+                </div>
+            <div class="tab-contents" id="education">
+                <ul>
+                    <li><span>2020</span><br>SEE from Rising himse Academy</li>
+                    <li><span>2022</span><br>+2 from Kalinchowk secondary school</li>
+                    <li><span>2023</span><br>Pursuing bachlors degree from herald college kathmandu</li>
+                    <li><span>2023</span><br>Pursuing pharmacy degree from Nobel college of medical sciences</li>
+                </ul>
+            </div>          
+        </div>
+    </div>
+ </div>
+</div>
+     <!---------contact------>
+     <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-envelope"></i> Contact: elisivaoli@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>+977 9819892321</p>
+                    <div class="Social-icons">
+                        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/garima-oli-42521426b/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href=""><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <a href="CV.pdf"download class="btn btn2">DOWNLOAD CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright  <i class="fa-solid fa-heart"></i> Garima Oli @2023.All rights reserved</p>
+        </div>
+     </div>
+     <script src="https://kit.fontawesome.com/7ab14efdfc.js" crossorigin="anonymous"></script>
+
+
+
+    <script>
+
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+
+        }
+    </script>
+     
+     <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw1O188Pz7TtZK9DTc3fvjTBLnNwKZ0M584Q-6BHeV1UV302Nj9Lh5VBE-qQm63z9i86Q/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML="Message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML= ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+    
+</body>
+</html>
